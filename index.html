@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Lib+</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-tela="capa">
+
+    <!-- CAPA -->
+    <section id="capa" class="tela ativa">
+
+        <div class="logo" aria-label="Lib+">
+            <span class="l">L</span>
+            <span class="i">i</span>
+            <span class="b">b</span>
+            <span class="m">+</span>
+        </div>
+
+        <button class="btn" onclick="ir('inicio')">Entrar</button>
+
+    </section>
+
+
+    <!-- APLICATIVO -->
+    <div id="app">
+
+        <!-- MENU (LATERAL NO COMPUTADOR / INFERIOR NO CELULAR) -->
+        <nav class="nav" aria-label="Menu principal">
+
+            <div class="menu-titulo">MENU</div>
+
+            <button data-go="inicio" class="ativo" onclick="ir('inicio')" aria-label="Ir para a página de Início">
+                <span class="nav-icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 10.5L12 3l9 7.5"></path>
+                        <path d="M5.5 9.5V21h13V9.5"></path>
+                        <path d="M9.5 21v-6h5v6"></path>
+                    </svg>
+                </span>
+                <span>Início</span>
+            </button>
+
+            <button data-go="libras" onclick="ir('libras')" aria-label="Ir para a trilha de Libras">
+                <span class="nav-icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 11V6a1.5 1.5 0 0 1 3 0v4"></path>
+                        <path d="M10 10V4.5a1.5 1.5 0 0 1 3 0V10"></path>
+                        <path d="M13 10V6a1.5 1.5 0 0 1 3 0v5"></path>
+                        <path d="M16 11V8.5a1.5 1.5 0 0 1 3 0v6.5"></path>
+                        <path d="M19 14c0 4-2.5 6-6 6h-2c-2.5 0-4-1-5-3l-2-4a1.5 1.5 0 0 1 2.7-1.3L8 14"></path>
+                    </svg>
+                </span>
+                <span>Libras</span>
+            </button>
+
+            <button data-go="acess" onclick="ir('acess')" aria-label="Ir para a conscientização de Acessibilidade">
+                <span class="nav-icone" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="5" r="2"></circle>
+                        <path d="M5 9h14"></path>
+                        <path d="M12 7v11"></path>
+                        <path d="M8 21l4-7 4 7"></path>
+                        <path d="M8 9l4 3 4-3"></path>
+                    </svg>
+                </span>
+                <span>Acessibilidade</span>
+            </button>
+
+            <div class="nav-frase" aria-hidden="true">
+                <span>Aprender</span>
+                <strong>também é incluir.</strong>
+            </div>
+
+        </nav>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main>
+
+            <!-- TOPO -->
+            <header class="topbar">
+
+                <div class="topbar-logo">
+
+                    <button class="voltar-capa" onclick="ir('capa')" aria-label="Voltar para a tela de capa inicial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M19 12H5"></path>
+                            <path d="M11 6l-6 6 6 6"></path>
+                        </svg>
+                    </button>
+
+                    <div class="logo" aria-label="Logotipo Lib+">
+                        <span class="l">L</span>
+                        <span class="i">i</span>
+                        <span class="b">b</span>
+                        <span class="m">+</span>
+                    </div>
+
+                </div>
+
+                <div class="stats" id="stats" aria-live="polite"></div>
+
+            </header>
+
+
+            <!-- TELA: INÍCIO -->
+            <section id="inicio" class="tela">
+
+                <div class="inicio-topo">
+
+                    <div>
+                        <span class="eyebrow">SEU ESPAÇO DE APRENDIZADO</span>
+                        <h1>Comece sua jornada</h1>
+                    </div>
+
+                    <div class="jornada" aria-label="Porcentagem de progresso geral">
+                        <strong id="home-pct">0%</strong>
+                    </div>
+
+                </div>
+
+                <div class="progresso-card">
+                    <div class="progresso-numero">
+                        <div class="progresso-linha">
+                            <i id="home-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTROLE DE RESET DE PROGRESSO -->
+                <div class="painel-reset">
+                    <button type="button" class="btn-reset" onclick="zerarProgresso()" aria-label="Zerar todo o progresso do usuário">
+                        Zerar meu progresso
+                    </button>
+                </div>
+
+                <div class="explore-titulo">EXPLORE</div>
+
+                <div class="cards-home">
+
+                    <button class="home-card card-libras" onclick="ir('libras')">
+                        <div class="card-icone" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 11V6a1.5 1.5 0 0 1 3 0v4"></path>
+                                <path d="M10 10V4.5a1.5 1.5 0 0 1 3 0V10"></path>
+                                <path d="M13 10V6a1.5 1.5 0 0 1 3 0v5"></path>
+                                <path d="M16 11V8.5a1.5 1.5 0 0 1 3 0v6.5"></path>
+                                <path d="M19 14c0 4-2.5 6-6 6h-2c-2.5 0-4-1-5-3l-2-4a1.5 1.5 0 0 1 2.7-1.3L8 14"></path>
+                            </svg>
+                        </div>
+                        <div class="card-conteudo">
+                            <span>APRENDIZADO</span>
+                            <strong>Aprender Libras</strong>
+                        </div>
+                        <div class="card-seta" aria-hidden="true">→</div>
+                    </button>
+
+                    <button class="home-card card-acess" onclick="ir('acess')">
+                        <div class="card-icone" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="5" r="2"></circle>
+                                <path d="M5 9h14"></path>
+                                <path d="M12 7v11"></path>
+                                <path d="M8 21l4-7 4 7"></path>
+                                <path d="M8 9l4 3 4-3"></path>
+                            </svg>
+                        </div>
+                        <div class="card-conteudo">
+                            <span>CONSCIENTIZAÇÃO</span>
+                            <strong>Conheça a acessibilidade</strong>
+                        </div>
+                        <div class="card-seta" aria-hidden="true">→</div>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- TELA: LIBRAS -->
+            <section id="libras" class="tela">
+
+                <div class="pagina-cabecalho">
+                    <span class="eyebrow">APRENDER LIBRAS</span>
+                    <h1>Sua trilha de aprendizagem</h1>
+                    <p>Avance pelos sinais e complete cada etapa.</p>
+                </div>
+
+                <div class="unidade">
+                    <span>Unidade 1</span>
+                    <b>Primeiros passos em Libras</b>
+                </div>
+
+                <div class="prog" id="pbar" role="progressbar" aria-label="Seu progresso da trilha"
+                     aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <i id="pfill"></i>
+                </div>
+
+                <div class="trilha" id="trilha"></div>
+
+            </section>
+
+
+            <!-- TELA: ALFABETO -->
+            <section id="alfabeto" class="tela">
+
+                <span class="eyebrow">APRENDER LIBRAS</span>
+                <h1>Alfabeto manual</h1>
+                <p class="sub">Toque em uma letra para estudar o sinal.</p>
+
+                <div class="grade" id="grade"></div>
+                <div class="painel" id="painel">Escolha uma letra</div>
+
+            </section>
+
+
+            <!-- TELA: ACESSIBILIDADE (LISTAGEM DE TEMAS) -->
+            <section id="acess" class="tela">
+
+                <span class="eyebrow">CONSCIENTIZAÇÃO</span>
+                <h1>Conheça a acessibilidade</h1>
+                <p class="sub">Barreiras diferentes pedem recursos diferentes.</p>
+
+                <div class="cards" id="cards"></div>
+
+            </section>
+
+
+            <!-- TELA: DETALHE DO TEMA ESCOLHIDO -->
+            <section id="tema-detalhe" class="tela" aria-label="Detalhes da acessibilidade">
+
+                <button type="button" class="voltar-trilha" onclick="voltarAcess()" aria-label="Voltar para os temas">
+                    ← Voltar aos temas
+                </button>
+
+                <div id="conteudo-detalhe" aria-live="polite"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- TELA: LIÇÃO -->
+    <section id="licao" class="tela" aria-label="Lição">
+
+        <div class="topo-l">
+
+            <button class="x" onclick="sair()" aria-label="Sair da lição">←</button>
+
+            <div class="prog">
+                <i id="lfill" style="width:0%"></i>
+            </div>
+
+            <span class="chip" id="viv" aria-label="Vidas">❤️ 5</span>
+
+        </div>
+
+        <div class="corpo" id="corpo"></div>
+
+        <div class="rod" id="rod">
+            <div class="in" id="rodin"></div>
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
